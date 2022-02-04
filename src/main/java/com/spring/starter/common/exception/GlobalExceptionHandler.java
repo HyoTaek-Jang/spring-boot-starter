@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
 	protected ResponseEntity<BaseResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
 		String defaultMessage = Objects.requireNonNull(e.getBindingResult().getAllErrors().get(0).getDefaultMessage());;
 		log.error("handle Method Argument Not Valid Exception : {}", defaultMessage);
-		return ResponseEntity.status(500).body(new BaseResponse(defaultMessage, 500));
+		return ResponseEntity.status(400).body(new BaseResponse(defaultMessage, 400));
 	}
 
 	@ExceptionHandler(value = Exception.class)
